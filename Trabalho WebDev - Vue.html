@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yu-Gi-Oh! Deck Builder</title>
+  <style>
+    body {
+      font-family: motor-demonica;
+      background: linear-gradient(to bottom, #183f69, #000000);
+      background-image: url('seto kaiba.png');
+      background-size: cover;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      max-width: 1200px;
+      opacity: 0.85;
+      margin: 20px auto; /* Centraliza o container na página */
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .available-cards, .deck {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 45%;
+      background-color: #fff;
+      overflow-y: scroll;
+      max-height: 400px;
+      color: #000000; /* Texto preto */
+    }
+    .card {
+      border: 1px solid #eee;
+      padding: 5px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .card:hover {
+      background-color: #f0f0f0;
+    }
+    .card[data-type="monster"] {
+      background-color: #e4651c; /* Vermelho */
+      color: #fff;
+    }
+    .card[data-type="spell"] {
+      background-color: #2f7950; /* Verde */
+      color: #fff;
+    }
+    .card[data-type="trap"] {
+      background-color: #96006b; /* Amarelo */
+      color: #fff;
+    }
+    h1 {
+      text-align: center;
+      color: #ffffff; /* Texto branco */
+    }
+    h2 {
+      color: #000000;
+    }
+    .reset-button {
+      padding: 10px 20px;
+      background-color: #dc3545;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .reset-button:hover {
+      background-color: #c82333;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Yu-Gi-Oh! Deck Builder</h1>
+  
+  <div class="container">
+
+    <div class="available-cards">
+      <h2>Cartas Disponíveis</h2>
+      <div class="card" data-type="monster" id="Dark Magician" onclick="addToDeck('Dark Magician')">
+        <strong>Dark Magician</strong> 
+      </div>
+      <div class="card" data-type="monster" id="Blue-Eyes White Dragon" onclick="addToDeck('Blue-Eyes White Dragon')">
+        <strong>Blue-Eyes White Dragon</strong> 
+      </div>
+      <div class="card" data-type="trap" id="Mirror Force" onclick="addToDeck('Mirror Force')">
+        <strong>Mirror Force</strong> 
+      </div>
+      <div class="card" data-type="spell" id="Pot of Greed" onclick="addToDeck('Pot of Greed')">
+        <strong>Pot of Greed</strong> 
+      </div>
+      <div class="card" data-type="monster" id="Red-Eyes Black Dragon" onclick="addToDeck('Red-Eyes Black Dragon')">
+        <strong>Red-Eyes Black Dragon</strong> 
+      </div>
+      <div class="card" data-type="monster" data-extra="true" id="Blue-Eyes Ultimate Dragon" onclick="addToDeck('Blue-Eyes Ultimate Dragon')">
+        <strong>Blue-Eyes Ultimate Dragon</strong> 
+      </div>
+      <div class="card" data-type="monster" data-extra="true" id="Exodia the Forbidden One" onclick="addToDeck('Exodia the Forbidden One')">
+        <strong>Exodia the Forbidden One</strong> 
+      </div>
+      <div class="card" data-type="spell" id="Swords of Revealing Light" onclick="addToDeck('Swords of Revealing Light')">
+        <strong>Swords of Revealing Light</strong> 
+      </div>
+      <div class="card" data-type="spell" id="Monster Reborn" onclick="addToDeck('Monster Reborn')">
+        <strong>Monster Reborn</strong> 
+      </div>
+      <div class="card" data-type="trap" id="Trap Hole" onclick="addToDeck('Trap Hole')">
+        <strong>Trap Hole</strong> 
+      </div>
+      <div class="card" data-type="monster" id="Gaia the Fierce Knight" onclick="addToDeck('Gaia the Fierce Knight')">
+        <strong>Gaia the Fierce Knight</strong> 
+      </div>
+      <div class="card" data-type="monster" id="Summoned Skull" onclick="addToDeck('Summoned Skull')">
+        <strong>Summoned Skull</strong> 
+      </div>
+      <div class="card" data-type="trap" id="Magic Cylinder" onclick="addToDeck('Magic Cylinder')">
+        <strong>Magic Cylinder</strong> 
+      </div>
+      <div class="card" data-type="spell" id="Raigeki" onclick="addToDeck('Raigeki')">
+        <strong>Raigeki</strong> 
+      </div>
+      <div class="card" data-type="monster" id="Man-Eater Bug" onclick="addToDeck('Man-Eater Bug')">
+        <strong>Man-Eater Bug</strong> 
+      </div>
+      <div class="card" data-type="spell" id="Change of Heart" onclick="addToDeck('Change of Heart')">
+        <strong>Change of Heart</strong> 
+      </div>    
+      <div class="card" data-type="trap" id="Mirror Force" onclick="addToDeck('Mirror Force')">
+        <strong>Mirror Force</strong> 
+      </div>
+      <div class="card" data-type="spell" id="Pot of Greed" onclick="addToDeck('Pot of Greed')">
+        <strong>Pot of Greed</strong> 
+      </div>
+      <div class="card" data-type="monster" id="Red-Eyes Black Dragon" onclick="addToDeck('Red-Eyes Black Dragon')">
+        <strong>Red-Eyes Black Dragon</strong> 
+      </div>
+      <div class="card" data-type="monster" data-extra="true" id="Blue-Eyes Ultimate Dragon" onclick="addToDeck('Blue-Eyes Ultimate Dragon')">
+        <strong>Blue-Eyes Ultimate Dragon</strong> 
+      </div>
+      <div class="card" data-type="monster" data-extra="true" id="Exodia the Forbidden One" onclick="addToDeck('Exodia the Forbidden One')">
+        <strong>Exodia the Forbidden One</strong> 
+      </div>
+      <div class="card" data-type="spell" id="Swords of Revealing Light" onclick="addToDeck('Swords of Revealing Light')">
+        <strong>Swords of Revealing Light</strong> 
+      </div>
+      <div class="card" data-type="spell" id="Monster Reborn" onclick="addToDeck('Monster Reborn')">
+        <strong>Monster Reborn</strong> 
+      </div>
+      <div class="card" data-type="trap" id="Trap Hole" onclick="addToDeck('Trap Hole')">
+        <strong>Trap Hole</strong> 
+      </div>
+    </div>
+    
+    <div class="deck">
+      <h2>Seu Deck</h2>
+      <div id="deck">
+      </div>
+      <p id="totalCards">Total de Cartas no Deck: 0</p>
+    </div>
+  </div>
+ 
+  <div class="button-container">
+    <button class="reset-button" onclick="resetDeck()">Resetar Deck</button>
+  </div>
+
+  <script>
+    // Objeto para manter o controle das contagens de cada carta no deck
+    var deckCount = {};
+
+    // Função para adicionar cartas ao deck
+    function addToDeck(name) {
+      // Verifica se o deck atingiu o limite máximo de 60 cartas
+      if (Object.keys(deckCount).length >= 60) {
+        alert('O deck atingiu o limite máximo de 60 cartas!');
+        return;
+      }
+      
+      // Verifica se a carta já está no deck e se não excede o limite de 3 cópias
+      if (deckCount[name] && deckCount[name] >= 3) {
+        alert(`Você já possui o máximo de 3 cópias de "${name}" no deck.`);
+        return;
+      }
+      
+      // Adiciona a carta ao deck
+      if (deckCount[name]) {
+        deckCount[name]++;
+      } else {
+        deckCount[name] = 1; // Começa do número 1 ao adicionar a primeira instância da carta
+      }
+      
+      // Atualiza a exibição do deck
+      renderDeck();
+    }
+
+    // Função para remover cartas do deck
+    function removeFromDeck(name) {
+      // Verifica se a carta está no deck antes de tentar removê-la
+      if (deckCount[name] > 0) {
+        deckCount[name]--;
+        
+        // Se a contagem chegar a zero, remove a carta do objeto deckCount
+        if  (deckCount[name] === 0) {
+          delete deckCount[name];
+        }
+        
+        // Atualiza a exibição do deck
+        renderDeck();
+      }
+    }
+
+    // Função para resetar o deck
+    function resetDeck() {
+      deckCount = {}; // Limpa o objeto deckCount
+      renderDeck(); // Atualiza a exibição do deck
+    }
+
+    // Função para renderizar o deck na interface
+    function renderDeck() {
+      var deckElement = document.getElementById('deck');
+      deckElement.innerHTML = ''; // Limpa o conteúdo atual do deck
+      
+      // Cria um objeto para manter o controle da primeira instância de cada carta no deck
+      var firstInstance = {};
+      
+      // Itera sobre as cartas no deckCount e cria elementos HTML para cada carta no deck
+      Object.keys(deckCount).forEach(function(name) {
+        if (!firstInstance[name]) {
+          firstInstance[name] = deckCount[name];
+        }
+      });
+
+      Object.keys(firstInstance).forEach(function(name) {
+        var cardElement = document.createElement('div');
+        cardElement.className = 'card';
+
+        // Verifica se há mais de uma cópia da carta e adiciona a contagem ao lado
+        if (deckCount[name] > 1) {
+          cardElement.textContent = `${name} (${deckCount[name]})`;
+        } else {
+          cardElement.textContent = name;
+        }
+        
+                // Adiciona o atributo data-type com base no tipo da carta
+                if (name === 'Dark Magician' || name === 'Blue-Eyes White Dragon' || name === 'Red-Eyes Black Dragon' || name === 'Blue-Eyes Ultimate Dragon' || name === 'Exodia the Forbidden One'||name === 'Man-Eater Bug') {
+          cardElement.setAttribute('data-type', 'monster');
+          
+          // Verifica se a carta pertence ao Extra Deck e adiciona um atributo data-extra
+          if (cardElement.getAttribute('data-extra') === 'true') {
+            cardElement.setAttribute('data-extra', 'true');
+          }
+        } else if (name === 'Mirror Force' || name === 'Trap Hole') {
+          cardElement.setAttribute('data-type', 'trap');
+        } else {
+          cardElement.setAttribute('data-type', 'spell');
+        }
+        
+        // Adiciona a função de remover ao clicar na carta do deck
+        cardElement.onclick = function() {
+          removeFromDeck(name);
+        };
+
+        deckElement.appendChild(cardElement);
+      });
+      
+      // Calcula o número total de cartas no deck, incluindo as cópias extras
+      var totalCardsCount = Object.values(deckCount).reduce((acc, val) => acc + val, 0);
+      
+      // Atualiza o número total de cartas no deck
+      var totalCards = document.getElementById('totalCards');
+      totalCards.textContent = `Total de Cartas no Deck: ${totalCardsCount}`;
+    }
+  </script>
+</body>
+</html>
