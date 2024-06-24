@@ -85,7 +85,7 @@
   <h1>Yu-Gi-Oh! Deck Builder</h1>
   
   <div class="container">
-
+    <!-- Cartas Disponíveis -->
     <div class="available-cards">
       <h2>Cartas Disponíveis</h2>
       <div class="card" data-type="monster" id="Dark Magician" onclick="addToDeck('Dark Magician')">
@@ -162,14 +162,17 @@
       </div>
     </div>
     
+    <!-- Deck Atual -->
     <div class="deck">
       <h2>Seu Deck</h2>
       <div id="deck">
+        <!-- As cartas adicionadas serão exibidas aqui -->
       </div>
       <p id="totalCards">Total de Cartas no Deck: 0</p>
     </div>
   </div>
- 
+
+  <!-- Botão de Reset -->
   <div class="button-container">
     <button class="reset-button" onclick="resetDeck()">Resetar Deck</button>
   </div>
